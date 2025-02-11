@@ -1,4 +1,4 @@
-#Taskly Taskly
+# Taskly
 
 Taskly is a handy and intuitive task planner that is inspired by stickers on your desktop. Organize your tasks, projects and ideas into virtual stickers that can be easily moved, grouped and customized to your needs.
 
@@ -40,6 +40,7 @@ Taskly is a handy and intuitive task planner that is inspired by stickers on you
 1. **Clone the repository**:
    ```bash
  git clone https://github.com/For2ate/Taskly.git
+   ```
 
 
 ## License 
