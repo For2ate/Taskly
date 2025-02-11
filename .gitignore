@@ -132,3 +132,10 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+
+
+# Configuration files
+
+appsettings.json
+Properties/launchSettings.json
