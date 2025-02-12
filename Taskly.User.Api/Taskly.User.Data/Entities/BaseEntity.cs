@@ -8,7 +8,7 @@ namespace Taskly.User.Data.Entities {
     
     public class BaseEntity {
     
-        Guid Id { get; set; }
+        public Guid Id { get; set; }
 
     }
 
