@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskly.User.Api", "Taskly.User.Api\Taskly.User.Api.csproj", "{42ED9852-5802-44B2-9DD6-824BAE820592}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskly.User.Api", "Taskly.User.Api\Taskly.User.Api.csproj", "{42ED9852-5802-44B2-9DD6-824BAE820592}"
+	ProjectSection(ProjectDependencies) = postProject
+		{50034D94-4017-417C-AC77-5585351FD10A} = {50034D94-4017-417C-AC77-5585351FD10A}
+		{E65DD65C-EEE8-475C-A26B-2B855CDA9A84} = {E65DD65C-EEE8-475C-A26B-2B855CDA9A84}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskly.User.Data", "Taskly.User.Data\Taskly.User.Data.csproj", "{50034D94-4017-417C-AC77-5585351FD10A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskly.User.Data", "Taskly.User.Data\Taskly.User.Data.csproj", "{50034D94-4017-417C-AC77-5585351FD10A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E65DD65C-EEE8-475C-A26B-2B855CDA9A84} = {E65DD65C-EEE8-475C-A26B-2B855CDA9A84}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskly.User.Models", "Taskly.User.Models\Taskly.User.Models.csproj", "{E65DD65C-EEE8-475C-A26B-2B855CDA9A84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskly.User.Models", "Taskly.User.Models\Taskly.User.Models.csproj", "{E65DD65C-EEE8-475C-A26B-2B855CDA9A84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
