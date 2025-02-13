@@ -18,7 +18,7 @@ namespace Taskly.User.Data.Entities {
 
         public string? LastName { get; set; }
 
-        public string Username => $"{FirstName}_{LastName}";
+        public string Username => $"{FirstName} {LastName}";
 
     }
 

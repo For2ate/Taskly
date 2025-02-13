@@ -46,7 +46,7 @@ namespace Taskly.User.Api.Controllers {
 
         }
 
-        [HttpGet("Login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> LoginUserAsync(UserLoginRequestModel model) {
 
             try {
