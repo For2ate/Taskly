@@ -6,6 +6,10 @@
 
         public string Color { get; set; }
 
+        public virtual ICollection<BoardUserEntity> BoardsUsers { get; set; }
+
+        public virtual ICollection<BoardStickerEntity> BoardsStickers { get; set; }
+
     }
 
 }

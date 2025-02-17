@@ -1,9 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Taskly.Stickers.Data.DataContexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+string? connectionStringStickersDB = builder.Configuration.GetConnectionString("StickersDb");
+builder.Services.AddDbContext<StickersContext>(options => options.UseNpgsql(connectionStringStickersDB));
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();

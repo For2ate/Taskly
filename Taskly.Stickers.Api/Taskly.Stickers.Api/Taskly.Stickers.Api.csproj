@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -24,6 +24,11 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Taskly.Stickers.Data\Taskly.Stickers.Data.csproj" />
+    <ProjectReference Include="..\Taskly.Stickers.Models\Taskly.Stickers.Models.csproj" />
   </ItemGroup>
 
 </Project>

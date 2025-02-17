@@ -2,7 +2,7 @@
 
 namespace Taskly.Stickers.Data.Entities {
 
-    public class StickersEntity : BaseEntity {
+    public class StickerEntity : BaseEntity {
         
         public Guid UserId { get; set; }
 
@@ -17,6 +17,8 @@ namespace Taskly.Stickers.Data.Entities {
         public DateTime DateStart { get; set; }
 
         public DateTime DateEnd { get; set; }
+
+        public virtual ICollection<BoardStickerEntity> BoardsStickers { get; set; }
         
 
     }

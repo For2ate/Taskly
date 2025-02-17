@@ -8,7 +8,7 @@
 
         public Guid StickerId { get; set; }
 
-        public virtual StickersEntity Sticker { get; set; }
+        public virtual StickerEntity Sticker { get; set; }
 
     }
 

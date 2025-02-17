@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="MappingProfilies\" />
-    <Folder Include="Configurations\" />
   </ItemGroup>
 
   <ItemGroup>
