@@ -16,7 +16,7 @@ Taskly is a handy and intuitive task planner that is inspired by stickers on you
 ### Backend
 
 - **Language**: C#
-- **Framework**: .NET, ASP.NET WebAPI, RabbitMQ, FluentValidation, AutoMapper
+- **Framework**: .NET, ASP.NET WebAPI, RabbitMQ, FluentValidation, AutoMapper, Refit
 - **Database**: PostgreSQL (or SQL Server)
 - **ORM**: Entity Framework Core
 - **Authentication**: JWT (JSON Web Tokens)

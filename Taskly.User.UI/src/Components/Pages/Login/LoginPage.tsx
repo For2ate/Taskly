@@ -95,8 +95,6 @@ export const LoginPage = () => {
     const result = await LoginFetch(data);
 
     if (result) {
-      console.log("Login successful:", result);
-
       localStorage[`userId`] = result.id;
       localStorage[`userName`] = result.username;
       localStorage[`userEmail`] = result.email;
