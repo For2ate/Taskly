@@ -23,7 +23,7 @@ Taskly is a handy and intuitive task planner that is inspired by stickers on you
 
 ### Frontend
 
-- **Language**: JavaScript
+- **Language**: TypeScript(JavaScript)
 - **Library**: React
 - **Styles**: CSS Modules, MaterialUI
 - **State**: Redux Toolkit
