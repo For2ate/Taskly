@@ -16,9 +16,7 @@ namespace Taskly.Stickers.Data.DataContexts {
 
         public DbSet<BoardStickerEntity> BoardsStickers { get; set; }
         
-        public StickersContext(DbContextOptions<StickersContext> contextOptions) : base(contextOptions) {
-
-        }
+        public StickersContext(DbContextOptions<StickersContext> contextOptions) : base(contextOptions) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 

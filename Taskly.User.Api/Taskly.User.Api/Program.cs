@@ -39,7 +39,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => {
     options.AddPolicy("MyPolicy",
         builder => {
-            builder.WithOrigins("http://localhost:3000") // Укажите ваш домен
+            builder.WithOrigins("http://localhost:3000") 
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
