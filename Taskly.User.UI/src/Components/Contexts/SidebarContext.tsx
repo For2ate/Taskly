@@ -6,7 +6,7 @@ interface SidebarContextType {
 }
 
 // Создаем контекст с начальными значениями
-const SidebarContext = createContext<SidebarContextType>({
+export const SidebarContext = createContext<SidebarContextType>({
   isOpen: false,
   toggleSideBar: () => {},
 });
@@ -28,6 +28,3 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
     </SidebarContext.Provider>
   );
 };
-
-// Хук для удобного использования контекста
-export const useSidebar = () => useContext(SidebarContext);

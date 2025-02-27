@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import {
-  TextField,
-  Button,
-  Typography,
-  CssBaseline,
-  Link,
-} from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { SideBar } from "../../CommonComponents/SideBar";
+import { SideBar } from "./SideBar";
 import { SidebarProvider } from "../../Contexts/SidebarContext";
+import backgroundImage from "../../Assets/mainPageBackGround.jpg";
+import { Board } from "./Boards/Board";
 
 const theme = createTheme({
   typography: {
@@ -79,6 +74,9 @@ export const MainPage = () => {
           <SidebarProvider>
             <SideBar></SideBar>
           </SidebarProvider>
+        </Grid>
+        <Grid>
+          <Board></Board>
         </Grid>
       </Grid>
     </ThemeProvider>

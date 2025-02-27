@@ -16,6 +16,12 @@ namespace Taskly.Stickers.Api.Core.Interfaces {
         Task DeleteBoardById(Guid id);
 
 
+        Task AddStickerOnBoardAsync(BoardStickerRequestModel model);
+
+        Task DeleteStickerOnBoardAsync(BoardStickerRequestModel model);
+
+        Task<IEnumerable<Guid>> GetAllStickersToBoardAsync(Guid boardId);
+
     }
 
 }

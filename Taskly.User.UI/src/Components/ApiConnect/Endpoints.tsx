@@ -2,9 +2,11 @@ import axios from "axios";
 import {
   LoginData,
   RegisterData,
+  StickersApiUrl,
   UserApiUrl,
   UserFullResponse,
 } from "./Constants";
+import { AddNewBoardModel } from "./Models";
 
 export const RegisterFetch = async (data: RegisterData) => {
   try {
@@ -48,5 +50,21 @@ export const LoginFetch = async (
       console.error("Unexpected error:", error);
     }
     return null;
+  }
+};
+
+export const AddNewBoard = async (data: AddNewBoardModel) => {
+  try {
+    const result = await axios.post(`${StickersApiUrl}/Api/Boards/Board`, data);
+    return result.data;
+  } catch (error) {}
+};
+
+export const GetBoardsForUser = async (data: string) => {
+  try {
+    const result = await axios.get(`${StickersApiUrl}/Api/Boards/User/${data}`);
+    return result.data;
+  } catch (error) {
+    console.error(error);
   }
 };

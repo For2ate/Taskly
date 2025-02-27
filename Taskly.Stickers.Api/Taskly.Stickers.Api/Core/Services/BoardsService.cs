@@ -13,14 +13,16 @@ namespace Taskly.Stickers.Api.Core.Services {
         private readonly IBoardsStickersRepository _boardsStickersRepository;
         private readonly IBaseRepository<BoardEntity> _boardsRepository;
         private readonly IBaseRepository<UserEntity> _usersRepository;
+        private readonly IStickersRepository _stickersRepository;
         private readonly IMapper _boardsMapper;
 
-        public BoardsService(IBoardsStickersRepository boardsStickersRepository, IBoardsUsersRepository boardsUsersRepository, IBaseRepository<UserEntity> usersRepository,IBaseRepository<BoardEntity> boardsRepository, IMapper boardsMapper) {
+        public BoardsService(IBoardsStickersRepository boardsStickersRepository, IStickersRepository stickersRepository,  IBoardsUsersRepository boardsUsersRepository, IBaseRepository<UserEntity> usersRepository,IBaseRepository<BoardEntity> boardsRepository, IMapper boardsMapper) {
 
             _boardsRepository = boardsRepository;
             _boardsStickersRepository = boardsStickersRepository;
             _boardsUsersRepository = boardsUsersRepository;
             _usersRepository = usersRepository;
+            _stickersRepository = stickersRepository;
             _boardsMapper = boardsMapper;
         }
 
@@ -139,6 +141,88 @@ namespace Taskly.Stickers.Api.Core.Services {
                 var board = await _boardsRepository.GetByIdAsync(id);
 
                 await _boardsRepository.RemoveAsync(board);
+
+            } catch (Exception ex) {
+
+                throw;
+
+            }
+
+        }
+
+        public async Task AddStickerOnBoardAsync(BoardStickerRequestModel model){
+
+            try {
+
+                var findModel = await _boardsStickersRepository.FindByIdsAsync(model);
+                if (findModel != null) {
+
+                    throw new Exception("Sticker in board.");
+
+                }
+
+                var stickerEntity = await _stickersRepository.GetByIdAsync(model.StickerId);
+                if (stickerEntity == null) {
+
+                    throw new Exception("Sticker doesn't exist.");
+
+                }
+
+                var boardEntity = await _boardsRepository.GetByIdAsync(model.BoardId);
+                if (boardEntity == null) {
+
+                    throw new Exception("Board doesn't exist.");
+
+                }
+
+                var boardSticker = new BoardStickerEntity {
+
+                    BoardId = model.BoardId,
+                    Board = boardEntity,
+                    StickerId = model.StickerId,
+                    Sticker = stickerEntity
+
+                };
+
+                await _boardsStickersRepository.AddAsync(boardSticker);
+
+            } catch (Exception ex) {
+
+                throw;
+
+            }
+
+        }
+
+        public async Task DeleteStickerOnBoardAsync(BoardStickerRequestModel model) {
+
+            try {
+
+                var boardSticker = await _boardsStickersRepository.FindByIdsAsync(model);
+
+                await _boardsStickersRepository.RemoveAsync(boardSticker);
+
+            } catch (Exception ex) {
+
+                throw;
+
+            }
+
+        }
+
+        public async Task<IEnumerable<Guid>> GetAllStickersToBoardAsync(Guid boardId) {
+
+            try {
+
+                var stickers = await _boardsStickersRepository.GetAllStickersByBoardIdAsync(boardId);
+
+                List<Guid> stickersId = new List<Guid>();
+
+                foreach (var sticker in stickers) {
+                    stickersId.Add(sticker.StickerId);
+                }
+
+                return stickersId;
 
             } catch (Exception ex) {
 

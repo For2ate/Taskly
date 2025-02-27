@@ -1,4 +1,5 @@
 export const UserApiUrl: string = `https://localhost:7044`;
+export const StickersApiUrl: string = `https://localhost:7162`;
 
 export interface LoginData {
   login: string;

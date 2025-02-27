@@ -119,6 +119,63 @@ namespace Taskly.Stickers.Api.Controllers {
 
         }
 
+        [HttpPost("Board/AddSticker")]
+        public async Task <IActionResult> AddStickerOnBoard(BoardStickerRequestModel model) {
+
+            try {
+
+                await _boardsService.AddStickerOnBoardAsync(model);
+
+                return Ok("Sticker added on board.");
+
+            } catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+
+                return BadRequest(ex.Message);
+
+            }
+
+        }
+
+        [HttpDelete("Board/DeleteSticker")]
+        public async Task<IActionResult> DeleteStickerOnBoard(BoardStickerRequestModel model) {
+
+            try {
+
+                await _boardsService.DeleteStickerOnBoardAsync(model);
+
+                return Ok("Sticker delete.");
+
+            } catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+
+                return BadRequest(ex.Message);
+
+            }
+
+        }
+
+        [HttpGet("Board/Stickers/{boardId}")] 
+        public async Task <IActionResult> GetAllStickersToBoard(Guid boardId) {
+
+            try {
+
+                var stickers = await _boardsService.GetAllStickersToBoardAsync(boardId);
+
+                return Ok(stickers);
+
+            } catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+
+                return BadRequest(ex.Message);
+
+            }
+
+        }
+
     }
 
 }
