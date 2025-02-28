@@ -67,7 +67,7 @@ const OpenSideBar = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid size={12}>
+      <Grid size={12} sx={{ marginBottom: "5px" }}>
         <Button
           sx={{
             width: "90%",

@@ -10,6 +10,9 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
+import { StickerModel } from "../../../ApiConnect/Models";
+import { useAppDispatch } from "../../../../hooks";
+import { updateStickerOnServer } from "../../../../Store/Redusers/stickersSlice";
 
 const priorityColors: Record<number, string> = {
   0: "#F5001D", // Overdue
@@ -47,21 +50,18 @@ const StyledSelect = styled(Select)(({ theme }) => ({
   },
 }));
 
-export const Sticker = () => {
-  const [sticker, setSticker] = useState({
-    id: "3d32bbfc-821a-4709-9b0a-c8ab68ff9d8c",
-    header: "First sticker",
-    text: "",
-    priority: 0,
-    dateStart: dayjs("2025-02-18T18:14:36.195Z"),
-    dateEnd: dayjs("2025-02-18T18:14:36.195Z"),
-  });
+export const Sticker = (globalSticker: StickerModel) => {
+  const dispatch = useAppDispatch();
+  const [sticker, setLocalSticker] = useState(globalSticker);
 
-  const handleDateEndChange = (date: Dayjs | null) => {
-    setSticker((prevSticker) => ({
-      ...prevSticker,
-      dateEnd: date || dayjs(),
-    }));
+  const handlePriorityChange = (event: any) => {
+    const newPriority = event.target.value;
+    setLocalSticker({ ...sticker, priority: newPriority });
+    handleSave();
+  };
+
+  const handleSave = () => {
+    dispatch(updateStickerOnServer(sticker));
   };
 
   return (
@@ -72,7 +72,6 @@ export const Sticker = () => {
         sx={{
           width: "250px",
           height: "350px",
-          border: "1px solid #000000",
           borderRadius: "20px",
           background: "#60D6A7",
           padding: "15px",
@@ -99,6 +98,7 @@ export const Sticker = () => {
               name="priority"
               sx={{ border: "none" }}
               value={sticker.priority}
+              onChange={handlePriorityChange}
               renderValue={(selected) => (
                 <Tooltip title="Priority Level">
                   <PriorityCircle priority={selected as number} />
@@ -134,11 +134,7 @@ export const Sticker = () => {
         </Grid>
         <Grid container direction={"row"} sx={{ mt: 2 }}>
           <Grid size={12}>
-            <DatePicker
-              label="End Date"
-              value={sticker.dateEnd}
-              onChange={handleDateEndChange}
-            />
+            <DatePicker label="End Date" value={dayjs(sticker.dateEnd)} />
           </Grid>
         </Grid>
       </Grid>

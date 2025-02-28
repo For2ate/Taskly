@@ -6,7 +6,7 @@ import {
   UserApiUrl,
   UserFullResponse,
 } from "./Constants";
-import { AddNewBoardModel } from "./Models";
+import { AddNewBoardModel, StickerModel } from "./Models";
 
 export const RegisterFetch = async (data: RegisterData) => {
   try {
@@ -63,6 +63,40 @@ export const AddNewBoard = async (data: AddNewBoardModel) => {
 export const GetBoardsForUser = async (data: string) => {
   try {
     const result = await axios.get(`${StickersApiUrl}/Api/Boards/User/${data}`);
+    return result.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const GetStickersIdForBoard = async (data: string) => {
+  try {
+    const result = await axios.get(
+      `${StickersApiUrl}/Api/Boards/Board/Stickers/${data}`
+    );
+    return result.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const GetStickerById = async (data: string) => {
+  try {
+    const result = await axios.get(
+      `${StickersApiUrl}/Api/Stickers/Sticker/${data}`
+    );
+    return result.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const UpdateSticker = async (data: StickerModel) => {
+  try {
+    const result = await axios.put(
+      `${StickersApiUrl}/Api/Stickers/Sticker`,
+      data
+    );
     return result.data;
   } catch (error) {
     console.error(error);
