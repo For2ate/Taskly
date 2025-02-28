@@ -1,25 +1,10 @@
-import React, { useState } from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import {
-  TextField,
-  Button,
-  Typography,
-  CssBaseline,
-  Link,
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
-  ListItemIcon,
-  IconButton,
-} from "@mui/material";
+import { Button, Typography, IconButton } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import MenuIcon from "@mui/icons-material/Menu";
 import FastForwardIcon from "@mui/icons-material/FastForward";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
-import { useSidebar } from "../Contexts/SidebarContext";
-import { useTheme } from "@emotion/react";
 import SearchIcon from "@mui/icons-material/Search";
+import { Boards } from "./Boards/Boards";
+import { useSidebar } from "../../../hooks";
 
 export const SideBar = () => {
   const { isOpen } = useSidebar();
@@ -82,7 +67,7 @@ const OpenSideBar = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid size={12}>
+      <Grid size={12} sx={{ marginBottom: "5px" }}>
         <Button
           sx={{
             width: "90%",
@@ -97,10 +82,22 @@ const OpenSideBar = () => {
               <SearchIcon></SearchIcon>
             </Grid>
             <Grid size={4}>
-              <Typography color="textSideBar"> Search </Typography>
+              <Typography color="textSideBar" style={{ textTransform: "none" }}>
+                {" "}
+                Search{" "}
+              </Typography>
             </Grid>
           </Grid>
         </Button>
+      </Grid>
+      <Grid
+        size={12}
+        sx={{
+          width: "100%",
+          height: "50%",
+        }}
+      >
+        <Boards />
       </Grid>
       <Grid size={12}>
         <Grid container direction={"row"} spacing={2}>
